@@ -1,0 +1,33 @@
+{
+    "name": "@fremtind/whitelabel-demo",
+    "version": "0.0.0",
+    "description": "Theming and whitelabling demo",
+    "author": "Leiv Fredrik Berge <leiv.fredr@sparebank1.no>",
+    "homepage": "https://github.com/fremtind/jokul#readme",
+    "license": "ISC",
+    "main": "lib/whitelabel-demo.js",
+    "directories": {
+        "lib": "lib",
+        "test": "__tests__"
+    },
+    "files": [
+        "lib"
+    ],
+    "publishConfig": {
+        "registry": "https://nexus.intern.sparebank1.no/repository/npmgroup/"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/fremtind/jokul.git"
+    },
+    "scripts": {
+        "dev": "parcel src/demo.html",
+        "test": "echo \"Error: run tests from root\" && exit 1"
+    },
+    "bugs": {
+        "url": "https://github.com/fremtind/jokul/issues"
+    },
+    "dependencies": {
+        "regenerator-runtime": "^0.13.3"
+    }
+}

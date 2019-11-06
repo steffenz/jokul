@@ -3,16 +3,16 @@
 
 @import "~@fremtind/jkl-core/_functions.scss";
 
-$button-height--large: 3.5rem;
+$button-height--large: var(--button-height--large);
 $button-height--small: 2.5rem;
 
 $button-bg-color: $snohvit;
-$button-bg-color--primary: $svart;
+$button-bg-color--primary: var(--button-bg-color--primary);
 
-$button-text-color: $svart;
+$button-text-color: var(--button-text-color);
 $button-text-color--primary: $snohvit;
 
-$button-border-color: $svart;
+$button-border-color: var(--button-border-color);
 $button-border-width: rem(1px);
 $button-padding: $component-spacing--xl;
 
@@ -23,6 +23,7 @@ $animation-timing: 100ms cubic-bezier(0.6, 0.2, 0.35, 1);
 $hover-elevation-distance: -0.25rem;
 
 .jkl-button {
+    font-family: var(--font-family);
     height: $button-height--large;
     min-width: $button-height--large;
     line-height: $button-height--large;
@@ -47,12 +48,14 @@ $hover-elevation-distance: -0.25rem;
     border: none;
     outline: none;
     transform-origin: 50% 90%;
-    transition: transform $animation-timing;
+    transition: all $animation-timing;
     position: relative;
 
     html:not([data-mousenavigation]) &:focus,
     &:hover {
-        transform: scale(1.05);
+        transform: var(--hover-transform);
+        background-color: var(--hover-background-color);
+        color: var(--hover-text-color);
     }
 
     html:not([data-mousenavigation]) &:active,
@@ -75,7 +78,7 @@ $hover-elevation-distance: -0.25rem;
     &--primary,
     &--secondary {
         border: solid $button-border-width $button-border-color;
-        border-radius: 999px;
+        border-radius: var(--button-radius);
         padding: 0 $button-padding;
 
         &:after {
