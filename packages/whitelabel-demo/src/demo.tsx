@@ -1,7 +1,6 @@
 import "regenerator-runtime/runtime";
 
 import React from "react";
-import ReactDOM from "react-dom";
 import { initTabListener } from "@fremtind/jkl-core";
 import "@fremtind/jkl-core/core.scss";
 import "@fremtind/jkl-button/button.scss";
@@ -45,4 +44,4 @@ const App = () => {
     );
 };
 
-ReactDOM.render(<App />, document.getElementById("app"));
+export default App;
