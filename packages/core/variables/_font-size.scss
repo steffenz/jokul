@@ -17,48 +17,66 @@ $line-height-5: rem(48px);
 $line-height-6: rem(56px);
 $line-height-7: rem(72px);
 
+:root {
+    --font-size-1: #{$font-size-1};
+    --font-size-2: #{$font-size-2};
+    --font-size-3: #{$font-size-3};
+    --font-size-4: #{$font-size-4};
+    --font-size-5: #{$font-size-5};
+    --font-size-6: #{$font-size-6};
+    --font-size-7: #{$font-size-7};
+
+    --line-height-1: #{$line-height-1};
+    --line-height-2: #{$line-height-2};
+    --line-height-3: #{$line-height-3};
+    --line-height-4: #{$line-height-4};
+    --line-height-5: #{$line-height-5};
+    --line-height-6: #{$line-height-6};
+    --line-height-7: #{$line-height-7};
+}
+
 /* mobil: 14, 17, 17, 22, 28, 36, 48 */
 $font-size--small-device: (
-    "xxs": $font-size-1,
-    "xs": $font-size-2,
-    "small": $font-size-2,
-    "medium": $font-size-3,
-    "large": $font-size-4,
-    "xl": $font-size-5,
-    "xxl": $font-size-6,
+    "xxs": var(--font-size-1),
+    "xs": var(--font-size-2),
+    "small": var(--font-size-2),
+    "medium": var(--font-size-3),
+    "large": var(--font-size-4),
+    "xl": var(--font-size-5),
+    "xxl": var(--font-size-6),
 );
 
 /* desktop: 17, 17, 22, 28, 36, 48, 64 */
 $font-size--large-device: (
-    "xxs": $font-size-2,
-    "xs": $font-size-2,
-    "small": $font-size-3,
-    "medium": $font-size-4,
-    "large": $font-size-5,
-    "xl": $font-size-6,
-    "xxl": $font-size-7,
+    "xxs": var(--font-size-2),
+    "xs": var(--font-size-2),
+    "small": var(--font-size-3),
+    "medium": var(--font-size-4),
+    "large": var(--font-size-5),
+    "xl": var(--font-size-6),
+    "xxl": var(--font-size-7),
 );
 
 /* mobil: 16, 24, 24, 32, 32, 48, 56 */
 $line-height--small-device: (
-    "xxs": $line-height-1,
-    "xs": $line-height-2,
-    "small": $line-height-2,
-    "medium": $line-height-3,
-    "large": $line-height-3,
-    "xl": $line-height-5,
-    "xxl": $line-height-6,
+    "xxs": var(--line-height-1),
+    "xs": var(--line-height-2),
+    "small": var(--line-height-2),
+    "medium": var(--line-height-3),
+    "large": var(--line-height-3),
+    "xl": var(--line-height-5),
+    "xxl": var(--line-height-6),
 );
 
 /* desktop: 24, 24, 32, 40, 48, 56, 64 */
 $line-height--large-device: (
-    "xxs": $line-height-2,
-    "xs": $line-height-2,
-    "small": $line-height-3,
-    "medium": $line-height-4,
-    "large": $line-height-5,
-    "xl": $line-height-6,
-    "xxl": $line-height-7,
+    "xxs": var(--line-height-2),
+    "xs": var(--line-height-2),
+    "small": var(--line-height-3),
+    "medium": var(--line-height-4),
+    "large": var(--line-height-5),
+    "xl": var(--line-height-6),
+    "xxl": var(--line-height-7),
 );
 
 @mixin font-size--large-device($size) {

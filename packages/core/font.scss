@@ -23,7 +23,8 @@
 }
 
 :root {
-    //font-family: var(--font-family);
+    --font-family: "AkkuratPro";
+    font-family: var(--font-family);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
