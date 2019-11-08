@@ -2,7 +2,7 @@
 @import "~@fremtind/jkl-core/variables/_colors.scss";
 @import "~@fremtind/jkl-core/_functions.scss";
 
-$button-focus-ring-color: $focus-color;
+$button-focus-ring-color: var(--focus-color);
 
 .jkl-hamburger {
     border: none;

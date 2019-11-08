@@ -10,6 +10,9 @@
     --button-height--large: 2.5rem;
 }
 .dnb1 {
+    --focus-color: rgb(0, 114, 114);
+    --error-color: rgb(220, 42, 42);
+
     --button-bg-color--primary: #007272;
     --button-radius: 999px;
     --button-text-color: #ffffff;
@@ -27,14 +30,11 @@
     --select-border-color: rgb(20, 85, 90);
     --select-border-color--focus: rgb(0, 114, 114);
     --select-bg-color--options: white;
+    --select-bg-color--option-hover: rgb(20, 85, 90);
 
-    /* --font-size-1: 0.875rem;
-    --font-size-2: 0.875rem;
-    --font-size-3: 1rem;
-    --font-size-4: 1.25rem;
-    --font-size-5: 1.5rem;
-    --font-size-6: 2rem;
-    --font-size-7: 3rem; */
+    --radio-button-background-color: white;
+    --radio-button-background-color--hover: rgb(20, 85, 90);
+    --radio-button-color: rgb(20, 85, 90);
 }
 
 body {

@@ -23,7 +23,7 @@
     }
 
     html:not([data-mousenavigation]) &:focus {
-        @include background-color($focus-color);
+        @include background-color(var(--focus-color));
     }
 
     &--negative {

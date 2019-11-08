@@ -71,7 +71,7 @@ $bottom-margin: $component-spacing--large;
         }
 
         html:not([data-mousenavigation]) &:focus .jkl-datepicker__month-arrow {
-            border-color: $focus-color;
+            border-color: var(--focus-color);
             border-width: rem(4px);
         }
     }

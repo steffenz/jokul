@@ -9,9 +9,11 @@ $radio-button-dot-padding--compact: rem(3px);
 $radio-button-vertical-spacing: $component-spacing--large;
 $radio-button-vertical-spacing--compact: $component-spacing--medium;
 
-$radio-button-background-color: $snohvit;
-$radio-button-background-color--hover: $snohvit;
-$radio-button-color: $svart;
+:root {
+    --radio-button-background-color: #{$snohvit};
+    --radio-button-background-color--hover: #{$snohvit};
+    --radio-button-color: #{$svart};
+}
 
 @keyframes circleexpand {
     0% {
@@ -117,7 +119,7 @@ $radio-button-color: $svart;
         /* Focused state */
         html:not([data-mousenavigation]) &:focus ~ .jkl-radio-button__dot {
             &:before {
-                box-shadow: 0 0 0 rem(2px) #fff, 0 0px 0 rem(4px) $focus-color;
+                box-shadow: 0 0 0 rem(2px) #fff, 0 0px 0 rem(4px) var(--focus-color);
             }
         }
 
@@ -144,8 +146,8 @@ $radio-button-color: $svart;
             width: $radio-button-size;
             border-radius: 50%;
 
-            border: rem(1px) solid $radio-button-color;
-            background: $radio-button-background-color;
+            border: rem(1px) solid var(--radio-button-color);
+            background: var(--radio-button-background-color);
             transition: transform 150ms ease-in;
         }
 
@@ -161,7 +163,7 @@ $radio-button-color: $svart;
             width: $radio-button-size - (2 * $radio-button-dot-padding);
             transform: rotate(-45deg) scale(0);
 
-            background-color: $radio-button-color;
+            background-color: var(--radio-button-color);
         }
     }
 
@@ -172,10 +174,10 @@ $radio-button-color: $svart;
     &--error {
         .jkl-radio-button__dot {
             &:before {
-                border-color: $error-color;
+                border-color: var(--error-color);
             }
             &:after {
-                background-color: $error-color;
+                background-color: var(--error-color);
             }
         }
     }

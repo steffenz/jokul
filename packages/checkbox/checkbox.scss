@@ -4,10 +4,15 @@
 $checkbox-size: rem(24px);
 $checkbox-size--compact: rem(18px);
 
-$checkbox-background-color--checked: $svart;
-$checkbox-background-color--unchecked: $snohvit;
-$checkbox-background-color--error: $error-color;
-$checkbox-check-mark-color: $checkbox-background-color--unchecked;
+:root {
+    --checkbox-background-color--checked: #{$svart};
+    --checkbox-background-color--unchecked: #{$helhvit};
+    --checkbox-background-color--error: var(--error-color);
+    --checkbox-border-color: #{$svart};
+    --checkbox-border-width: #{rem(1px)};
+    --checkbox-border-radius: 0;
+    --checkbox-check-mark-color: #{$helhvit};
+}
 
 .jkl-checkbox {
     display: flex;
@@ -37,12 +42,12 @@ $checkbox-check-mark-color: $checkbox-background-color--unchecked;
 
     &--error {
         .jkl-checkbox__check-mark {
-            border-color: $checkbox-background-color--error;
+            border-color: var(--checkbox-background-color--error);
         }
 
         .jkl-checkbox__input:checked + .jkl-checkbox__check-mark,
         .jkl-checkbox__input:active + .jkl-checkbox__check-mark {
-            background-color: $checkbox-background-color--error;
+            background-color: var(--checkbox-background-color--error);
         }
     }
 
@@ -59,7 +64,7 @@ $checkbox-check-mark-color: $checkbox-background-color--unchecked;
 
     &:active > .jkl-checkbox__check-mark {
         transform: scale(0.9);
-        background-color: $checkbox-background-color--checked;
+        background-color: var(--checkbox-background-color--checked);
     }
 
     &__input {
@@ -69,7 +74,8 @@ $checkbox-check-mark-color: $checkbox-background-color--unchecked;
 
         /* Handle fake checkmark based on checked state */
         &:checked + .jkl-checkbox__check-mark {
-            background-color: $checkbox-background-color--checked;
+            background-color: var(--checkbox-background-color--checked);
+            border-color: var(--checkbox-background-color--checked);
         }
 
         &:checked + .jkl-checkbox__check-mark:after {
@@ -78,7 +84,7 @@ $checkbox-check-mark-color: $checkbox-background-color--unchecked;
         }
 
         html:not([data-mousenavigation]) &:focus + .jkl-checkbox__check-mark {
-            box-shadow: 0 0 0 rem(2px) #fff, 0 0px 0 rem(4px) $focus-color;
+            box-shadow: 0 0 0 rem(2px) #fff, 0 0px 0 rem(4px) var(--focus-color);
         }
     }
 
@@ -93,9 +99,9 @@ $checkbox-check-mark-color: $checkbox-background-color--unchecked;
         flex-shrink: 0; // Don't allow the check-mark to shrink in case of really long text
 
         outline: none;
-        border: solid rem(1px) $svart;
-        border-radius: 0; // fixes rounded corners in iOS Safari
-        background-color: $checkbox-background-color--unchecked;
+        border: solid var(--checkbox-border-width) var(--checkbox-border-color);
+        border-radius: var(--checkbox-border-radius); // fixes rounded corners in iOS Safari
+        background-color: var(--checkbox-background-color--unchecked);
         transition: background-color 200ms ease, transform 150ms ease;
 
         &:after {
@@ -110,7 +116,7 @@ $checkbox-check-mark-color: $checkbox-background-color--unchecked;
             transform: rotate(45deg);
             transform-origin: bottom left;
 
-            border: solid rem(2px) $checkbox-check-mark-color;
+            border: solid rem(2px) var(--checkbox-check-mark-color);
             border-left-width: 0;
             border-top-width: 0;
         }

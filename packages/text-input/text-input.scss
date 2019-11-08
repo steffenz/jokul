@@ -10,7 +10,7 @@ $input-bottom-padding: $component-spacing--small;
     --input-bg-color: inherit;
     --input-placeholder-color: #{$varm-fjellgra};
     --input-border-color: #{$svart};
-    --input-border-color--focus: #{$focus-color};
+    --input-border-color--focus: var(--focus-color);
 }
 
 .jkl-text-field {
@@ -87,12 +87,12 @@ $input-bottom-padding: $component-spacing--small;
 
         &[aria-invalid="true"],
         &:invalid {
-            box-shadow: inset 0 rem(-2px) 0 0 $error-color;
+            box-shadow: inset 0 rem(-2px) 0 0 var(--error-color);
 
             &:focus,
             &:hover,
             html:not([data-mousenavigation]) &:focus {
-                box-shadow: inset 0 rem(-4px) 0 0 $error-color;
+                box-shadow: inset 0 rem(-4px) 0 0 var(--error-color);
             }
         }
     }
