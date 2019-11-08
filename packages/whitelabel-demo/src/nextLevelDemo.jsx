@@ -15,7 +15,7 @@ import "@fremtind/jkl-select/select.css";
 import "@fremtind/jkl-checkbox/checkbox.css";
 import "@fremtind/jkl-datepicker/datepicker.css";
 
-import "./styles.css";
+//import "./styles.css";
 
 const listData = [
     {

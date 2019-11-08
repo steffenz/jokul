@@ -23,7 +23,6 @@ $animation-timing: 100ms cubic-bezier(0.6, 0.2, 0.35, 1);
 $hover-elevation-distance: -0.25rem;
 
 .jkl-button {
-    font-family: var(--font-family);
     height: $button-height--large;
     min-width: $button-height--large;
     line-height: $button-height--large;
