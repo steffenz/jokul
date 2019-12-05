@@ -3,7 +3,7 @@ import { Link, graphql, useStaticQuery } from "gatsby";
 import { LocationProvider } from "@reach/router";
 import { Accordion, AccordionItem } from "@fremtind/jkl-accordion-react";
 import { Hamburger } from "@fremtind/jkl-hamburger-react";
-import { coreLinks, developerLinks, designerLinks, profileLinks, exampleLinks } from "./links";
+import { staticLinks, mainMenu } from "./links";
 import "@fremtind/jkl-accordion/accordion.min.css";
 import "@fremtind/jkl-hamburger/hamburger.min.css";
 import { ToggleSwitch } from "@fremtind/jkl-toggle-switch-react";
@@ -14,7 +14,7 @@ import "./Menu.scss";
 export function Menu() {
     const [showMenu, toggleShowMenu] = useState(false);
 
-    const { allSitePage } = useStaticQuery(graphql`
+    const { allSitePage, allMarkdownRemark } = useStaticQuery(graphql`
         query getPages {
             allSitePage(filter: { path: { regex: "-react/example/ex/" } }) {
                 edges {
@@ -29,12 +29,24 @@ export function Menu() {
                     }
                 }
             }
+            allMarkdownRemark {
+                edges {
+                    node {
+                        frontmatter {
+                            path
+                            title
+                        }
+                    }
+                }
+            }
         }
     `);
     const menuRef = useRef(null);
 
     const toggleMenu = (show: boolean) => toggleShowMenu(show);
     const { theme, toggleTheme } = useContext(ThemeContext);
+
+    const menu = mainMenu(allMarkdownRemark, allSitePage);
 
     return (
         <LocationProvider>
@@ -52,117 +64,37 @@ export function Menu() {
 
                     <nav className="portal-menu__bar">
                         <Accordion>
-                            <AccordionItem
-                                title="Grunnleggende"
-                                startExpanded={!!location.pathname.match(/(core|jokul)/) || location.pathname === "/"}
-                            >
-                                {coreLinks.map((link) => (
-                                    <Link
-                                        key={link.title}
-                                        className="portal-menu__link"
-                                        to={`/${link.section}/${link.page}`}
-                                        tabIndex={showMenu ? 0 : -1}
-                                    >
-                                        {link.title}
-                                    </Link>
-                                ))}
-                            </AccordionItem>
-
-                            <AccordionItem
-                                title="Profilelementer"
-                                startExpanded={location.pathname.includes("profile")}
-                            >
-                                {profileLinks.map((link) => (
-                                    <Link
-                                        key={link.title}
-                                        className="portal-menu__link"
-                                        to={`/${link.section}/${link.page}`}
-                                        tabIndex={showMenu ? 0 : -1}
-                                    >
-                                        {link.title}
-                                    </Link>
-                                ))}
-                            </AccordionItem>
-                            <AccordionItem title="For designere" startExpanded={location.pathname.includes("designer")}>
-                                {designerLinks.map((link) => (
-                                    <Link
-                                        key={link.title}
-                                        className="portal-menu__link"
-                                        to={`/${link.section}/${link.page}`}
-                                        tabIndex={showMenu ? 0 : -1}
-                                    >
-                                        {link.title}
-                                    </Link>
-                                ))}
-                            </AccordionItem>
-                            <AccordionItem
-                                title="For utviklere"
-                                startExpanded={location.pathname.includes("developer")}
-                            >
-                                {developerLinks.map((link) => (
-                                    <Link
-                                        key={link.title}
-                                        className="portal-menu__link"
-                                        to={`/${link.section}/${link.page}`}
-                                        tabIndex={showMenu ? 0 : -1}
-                                    >
-                                        {link.title}
-                                    </Link>
-                                ))}
-                            </AccordionItem>
-                            <AccordionItem title="Komponenter" startExpanded={location.pathname.includes("example/ex")}>
-                                {allSitePage.edges.map((edge: any) => (
-                                    <Link
-                                        key={edge.node.context.frontmatter.title}
-                                        className="portal-menu__link"
-                                        to={edge.node.path}
-                                        tabIndex={showMenu ? 0 : -1}
-                                    >
-                                        {edge.node.context.frontmatter.title}
-                                    </Link>
-                                ))}
-                            </AccordionItem>
-                            <AccordionItem title="Eksempel" startExpanded={location.pathname.includes("example")}>
-                                {exampleLinks.map((link) => (
-                                    <Link
-                                        key={link.title}
-                                        className="portal-menu__link"
-                                        to={`/${link.section}/${link.page}`}
-                                        tabIndex={showMenu ? 0 : -1}
-                                    >
-                                        {link.title}
-                                    </Link>
-                                ))}
-                            </AccordionItem>
+                            {menu.map(({ sectionTitle, pages, matchingLocation }) => (
+                                <AccordionItem
+                                    key={sectionTitle}
+                                    title={sectionTitle}
+                                    startExpanded={matchingLocation(location)}
+                                >
+                                    {pages.map(({ title, path }) => (
+                                        <Link
+                                            key={title}
+                                            className="portal-menu__link"
+                                            to={path}
+                                            tabIndex={showMenu ? 0 : -1}
+                                        >
+                                            {title}
+                                        </Link>
+                                    ))}
+                                </AccordionItem>
+                            ))}
                         </Accordion>
-                        <a
-                            className="portal-menu__link portal-menu__link--github jkl-p"
-                            href="https://github.com/fremtind/jokul"
-                            tabIndex={showMenu ? 0 : -1}
-                        >
-                            Kode på Github
-                        </a>
-                        <a
-                            className="portal-menu__link portal-menu__link--github jkl-p"
-                            href="https://github.com/fremtind/jokul/issues/new?assignees=&labels=bug&template=bug_report.md&title="
-                            tabIndex={showMenu ? 0 : -1}
-                        >
-                            Rapporter feil
-                        </a>
-                        <a
-                            className="portal-menu__link portal-menu__link--github jkl-p"
-                            href="https://github.com/fremtind/jokul/issues/new?assignees=&labels=enhancement&template=feature_request.md&title="
-                            tabIndex={showMenu ? 0 : -1}
-                        >
-                            Forslag ny funksjon
-                        </a>
-                        <a
-                            className="portal-menu__link portal-menu__link--figma jkl-p"
-                            href="https://www.figma.com/file/TkbB9ANfejDSjB2u4u1OEuqM/J%C3%B8kul-components"
-                            tabIndex={showMenu ? 0 : -1}
-                        >
-                            Designbibliotek
-                        </a>
+
+                        {staticLinks.map(({ linkText, href, className }) => (
+                            <a
+                                className={`portal-menu__link jkl-p ${className}`}
+                                href={href}
+                                tabIndex={showMenu ? 0 : -1}
+                                key={linkText}
+                            >
+                                {linkText}
+                            </a>
+                        ))}
+
                         <ToggleSwitch
                             className="jkl-spacing--top-2 jkl-spacing--bottom-3"
                             checked={theme === "dark"}

@@ -1,3 +1,8 @@
+---
+title: startside
+path: /
+---
+
 # Landingsside
 
 ## Om Jøkul

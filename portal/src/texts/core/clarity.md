@@ -1,3 +1,8 @@
+---
+title: klarhet
+path: /kjerne/klarhet
+---
+
 ## Klarhet
 
 Fremtind skal fremstå som ærlig og transparent, med en klar og varm stemme. Vi skal skape klarhet gjennom å forenkle, fjerne unødvendig støy og gi brukerne kun relevante valg.

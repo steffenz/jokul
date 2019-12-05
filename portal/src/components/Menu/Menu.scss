@@ -48,6 +48,10 @@ $menu-width: rem(320px);
     z-index: 1;
     height: 100vh;
     position: fixed;
+    &__link:first-letter {
+        text-transform: capitalize;
+    }
+
     &__bar {
         box-sizing: border-box;
         min-height: 100vh;

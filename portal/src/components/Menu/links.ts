@@ -1,73 +1,87 @@
+const by = (regex: RegExp) => (edge: any) => edge.node.frontmatter.path && edge.node.frontmatter.path.match(regex);
+const edgeToPage = (edge: any) => ({
+    title: edge.node.frontmatter.title,
+    path: edge.node.frontmatter.path,
+});
+
+const profile = (rawPages: any) => ({
+    pages: rawPages.edges.filter(by(/^\/profil/)).map(edgeToPage),
+    sectionTitle: "Profilelementer",
+    matchingLocation: (location: any) => location.pathname.includes("profil"),
+});
+const core = (rawPages: any) => ({
+    pages: rawPages.edges.filter(by(/^\/kjerne/)).map(edgeToPage),
+    sectionTitle: "Grunnleggende",
+    matchingLocation: (location: any) => !!location.pathname.match(/kjerne/) || location.pathname === "/",
+});
+const developer = (rawPages: any) => ({
+    pages: rawPages.edges.filter(by(/^\/utvikler/)).map(edgeToPage),
+    sectionTitle: "For utviklere",
+    matchingLocation: (location: any) => location.pathname.includes("utvikler"),
+});
+const designer = (rawPages: any) => ({
+    pages: rawPages.edges.filter(by(/^\/designer/)).map(edgeToPage),
+    sectionTitle: "For designere",
+    matchingLocation: (location: any) => location.pathname.includes("designer"),
+});
+const components = (rawComponents: any) => ({
+    pages: rawComponents.edges.map((edge: any) => ({
+        title: edge.node.context.frontmatter.title,
+        path: edge.node.path,
+    })),
+    sectionTitle: "Komponenter",
+    matchingLocation: (location: any) => location.pathname.includes("example/ex"),
+});
+
 const makeLink = (title: string, page: string, section?: string) => ({
     title,
     page,
     section,
 });
 
-const makeDeveloperLink = (title: string, page: string) => makeLink(title, page, "developer");
-const makeDesignerLink = (title: string, page: string) => makeLink(title, page, "designer");
-const makeCoreLink = (title: string, page: string) => makeLink(title, page, "core");
-const makeComponentLink = (title: string, page: string) => makeLink(title, page, "components");
-const makeProfileLink = (title: string, page: string) => makeLink(title, page, "profile");
 const makeExampleLink = (title: string, page: string) => makeLink(title, page, "example");
-
-export const developerLinks = [
-    makeDeveloperLink("Kom i gang", "getting-started"),
-    makeDeveloperLink("Bidragsguide", "contribute"),
-    makeDeveloperLink("Testguide", "test"),
-    makeDeveloperLink("Portalguide", "portal"),
-];
-
-export const designerLinks = [makeDesignerLink("Kom i gang", "getting-started")];
-
-export const coreLinks = [
-    makeCoreLink("Designprinsipper", "principle"),
-    makeCoreLink("Bevegelse", "motion"),
-    makeCoreLink("Klarhet", "clarity"),
-    makeCoreLink("Elevasjon", "elevation"),
-    makeCoreLink("Mønstre", "pattern"),
-];
-
-export const componentLinks = [
-    makeComponentLink("Alle komponenter", ""),
-    makeComponentLink("Knapper", "button"),
-    makeComponentLink("Radioknapp", "radiobutton"),
-    makeComponentLink("Avmerkingsbokser", "checkbox"),
-    makeComponentLink("Feltgruppering", "fieldgroup"),
-    makeComponentLink("Bryter", "toggleswitch"),
-    makeComponentLink("Trekkspilliste", "accordion"),
-    makeComponentLink("Datovelger", "datepicker"),
-    makeComponentLink("Nedtrekksliste", "select"),
-    makeComponentLink("Typografi", "typography"),
-    makeComponentLink("Tabell", "table"),
-    makeComponentLink("Tekstfelt", "textfield"),
-    makeComponentLink("Langt tekstfelt", "textarea"),
-    makeComponentLink("Meldinger", "messagebox"),
-    makeComponentLink("Fremdriftsindikator", "progressbar"),
-    makeComponentLink("Logo", "logo"),
-    makeComponentLink("Logostempel", "logostamp"),
-    makeComponentLink("Lasteindikator", "loader"),
-    makeComponentLink("Delelinje", "dividerline"),
-    makeComponentLink("Kort", "card"),
-    makeComponentLink("Liste", "list"),
-    makeComponentLink("Hamburgermeny", "hamburger"),
-];
-
-export const profileLinks = [
-    makeProfileLink("Farger", "colors"),
-    makeProfileLink("Tilgjengelighet", "a11y"),
-    makeProfileLink("Stil og tone", "tone"),
-    makeProfileLink("Typografi", "typography"),
-    makeProfileLink("Bildestil", "picture"),
-    makeProfileLink("Ikoner", "icon"),
-    makeProfileLink("Sperring", "spacing"),
-    makeProfileLink("Layout", "layout"),
-    makeProfileLink("Skygger", "shadow"),
-    makeProfileLink("Logo", "logo"),
-];
 
 export const exampleLinks = [
     makeExampleLink("Kjøpsflyt", "purchaseFlow"),
     makeExampleLink("Footer", "footer"),
     makeExampleLink("Header", "header"),
+];
+
+const examples = {
+    pages: exampleLinks.map(({ title, section, page }) => ({ title, path: `/${section}/${page}` })),
+    sectionTitle: "Eksempler",
+    matchingLocation: (location: any) => location.pathname.includes("example"),
+};
+
+export const mainMenu = (rawPages: any, rawComponents: any) => [
+    core(rawPages),
+    profile(rawPages),
+    designer(rawPages),
+    developer(rawPages),
+    components(rawComponents),
+    examples,
+];
+
+export const staticLinks = [
+    {
+        href: "https://github.com/fremtind/jokul",
+        linkText: "Kode på Github",
+        className: "portal-menu__link--github",
+    },
+    {
+        href: "https://github.com/fremtind/jokul/issues/new?assignees=&labels=bug&template=bug_report.md&title=",
+        linkText: "Rapporter feil",
+        className: "portal-menu__link--github",
+    },
+    {
+        href:
+            "https://github.com/fremtind/jokul/issues/new?assignees=&labels=enhancement&template=feature_request.md&title=",
+        linkText: "Forslag ny funksjon",
+        className: "portal-menu__link--github",
+    },
+    {
+        href: "https://www.figma.com/file/TkbB9ANfejDSjB2u4u1OEuqM/J%C3%B8kul-components",
+        linkText: "Designbibliotek",
+        className: "portal-menu__link--figma",
+    },
 ];

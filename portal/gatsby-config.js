@@ -10,16 +10,17 @@ module.exports = {
         "gatsby-plugin-typescript",
         "gatsby-plugin-sass",
         {
-            resolve: "gatsby-source-filesystem",
+            resolve: `gatsby-source-filesystem`,
             options: {
-                name: `components`,
-                path: `${__dirname}/../packages`,
-                ignore: [`!**/example/ex/**`],
+                name: `markdown-pages`,
+                path: `${__dirname}/src/texts`,
             },
         },
+        `gatsby-transformer-remark`,
         {
             resolve: "gatsby-plugin-page-creator",
             options: {
+                name: `components`,
                 path: `${__dirname}/../packages`,
                 ignore: [`!**/example/ex/**`],
             },
