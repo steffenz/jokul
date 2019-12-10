@@ -22,7 +22,7 @@ module.exports = {
             options: {
                 name: `components`,
                 path: `${__dirname}/../packages`,
-                ignore: [`!**/example/ex/**`],
+                ignore: [`!**/example/documentation/**`],
             },
         },
         {

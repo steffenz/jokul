@@ -39,7 +39,7 @@ const makeLink = (title: string, page: string, section?: string) => ({
     section,
 });
 
-const makeExampleLink = (title: string, page: string) => makeLink(title, page, "example");
+const makeExampleLink = (title: string, page: string) => makeLink(title, page, "patterns");
 
 export const exampleLinks = [
     makeExampleLink("Kjøpsflyt", "purchaseFlow"),
@@ -50,7 +50,7 @@ export const exampleLinks = [
 const examples = {
     pages: exampleLinks.map(({ title, section, page }) => ({ title, path: `/${section}/${page}` })),
     sectionTitle: "Eksempler",
-    matchingLocation: (location: any) => location.pathname.includes("example"),
+    matchingLocation: (location: any) => location.pathname.includes("patterns"),
 };
 
 export const mainMenu = (rawPages: any, rawComponents: any) => [

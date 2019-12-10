@@ -16,7 +16,7 @@ export function Menu() {
 
     const { allSitePage, allMarkdownRemark } = useStaticQuery(graphql`
         query getPages {
-            allSitePage(filter: { path: { regex: "-react/example/ex/" } }) {
+            allSitePage(filter: { path: { regex: "-react/example/documentation/" } }) {
                 edges {
                     node {
                         id
