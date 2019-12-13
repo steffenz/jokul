@@ -1,36 +1,66 @@
-const by = (regex: RegExp) => (edge: any) => edge.node.frontmatter.path && edge.node.frontmatter.path.match(regex);
-const edgeToPage = (edge: any) => ({
+import { WindowLocation } from "@reach/router";
+
+interface GeneralDocPage {
+    node: {
+        frontmatter: {
+            path: string;
+            title: string;
+        };
+    };
+}
+interface GeneralDocPages {
+    edges: GeneralDocPage[];
+}
+
+interface ComponentDocPage {
+    node: {
+        id: string;
+        path: string;
+        context: {
+            frontmatter: {
+                title: string;
+            };
+        };
+    };
+}
+interface ComponentDocPages {
+    edges: ComponentDocPage[];
+}
+
+const by = (regex: RegExp) => (edge: GeneralDocPage) =>
+    edge.node.frontmatter.path && edge.node.frontmatter.path.match(regex);
+const edgeToPage = (edge: GeneralDocPage) => ({
     title: edge.node.frontmatter.title,
     path: edge.node.frontmatter.path,
 });
 
-const profile = (rawPages: any) => ({
+const profile = (rawPages: GeneralDocPages) => ({
     pages: rawPages.edges.filter(by(/^\/profil/)).map(edgeToPage),
     sectionTitle: "Profilelementer",
-    matchingLocation: (location: any) => location.pathname.includes("profil"),
+    matchingLocation: (location: WindowLocation) => location.pathname.includes("profil"),
 });
-const core = (rawPages: any) => ({
+const core = (rawPages: GeneralDocPages) => ({
     pages: rawPages.edges.filter(by(/^\/kjerne/)).map(edgeToPage),
     sectionTitle: "Grunnleggende",
-    matchingLocation: (location: any) => !!location.pathname.match(/kjerne/) || location.pathname === "/",
+    matchingLocation: (location: WindowLocation) => !!location.pathname.match(/kjerne/) || location.pathname === "/",
 });
-const developer = (rawPages: any) => ({
+const developer = (rawPages: GeneralDocPages) => ({
     pages: rawPages.edges.filter(by(/^\/utvikler/)).map(edgeToPage),
     sectionTitle: "For utviklere",
-    matchingLocation: (location: any) => location.pathname.includes("utvikler"),
+    matchingLocation: (location: WindowLocation) => location.pathname.includes("utvikler"),
 });
-const designer = (rawPages: any) => ({
+const designer = (rawPages: GeneralDocPages) => ({
     pages: rawPages.edges.filter(by(/^\/designer/)).map(edgeToPage),
     sectionTitle: "For designere",
-    matchingLocation: (location: any) => location.pathname.includes("designer"),
+    matchingLocation: (location: WindowLocation) => location.pathname.includes("designer"),
 });
-const components = (rawComponents: any) => ({
-    pages: rawComponents.edges.map((edge: any) => ({
+const components = (rawComponents: ComponentDocPages) => ({
+    pages: rawComponents.edges.map((edge: ComponentDocPage) => ({
         title: edge.node.context.frontmatter.title,
         path: edge.node.path,
     })),
     sectionTitle: "Komponenter",
-    matchingLocation: (location: any) => location.pathname.includes("example/ex"),
+    matchingLocation: (location: WindowLocation) => location.pathname.includes("example/ex"),
 });
 
 const makeLink = (title: string, page: string, section?: string) => ({
@@ -50,10 +80,10 @@ export const exampleLinks = [
 const examples = {
     pages: exampleLinks.map(({ title, section, page }) => ({ title, path: `/${section}/${page}` })),
     sectionTitle: "Eksempler",
-    matchingLocation: (location: any) => location.pathname.includes("patterns"),
+    matchingLocation: (location: WindowLocation) => location.pathname.includes("patterns"),
 };
 
-export const mainMenu = (rawPages: any, rawComponents: any) => [
+export const mainMenu = (rawPages: GeneralDocPages, rawComponents: ComponentDocPages) => [
     core(rawPages),
     profile(rawPages),
     designer(rawPages),
