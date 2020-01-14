@@ -1,0 +1,18 @@
+@import "~@fremtind/jkl-core/variables/_all.scss";
+@import "~@fremtind/jkl-core/mixins/_helpers.scss";
+
+.jkl-portal-swatch {
+    max-width: 33%;
+
+    & > &__name {
+        margin-bottom: $component-spacing--medium;
+    }
+
+    & > &__swatch {
+        height: rem(100px);
+    }
+
+    & > &__values {
+        margin-top: $component-spacing--small;
+    }
+}
