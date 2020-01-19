@@ -111,8 +111,27 @@ pre {
         padding: $component-spacing--small;
         background-color: $svart;
         color: $snohvit;
-        @include micro-paragraph;
+        @include jkl-text-style("desktop/micro");
         text-transform: uppercase;
         content: attr(data-language);
     }
+}
+
+.portal-paragraph {
+    &:not(:last-child) {
+        margin-bottom: $component-spacing--large;
+    }
+}
+
+.portal-doc-heading {
+    &:not(:first-child) {
+        margin-top: $layout-spacing--medium;
+    }
+    &:not(:last-child) {
+        margin-bottom: $component-spacing--small;
+    }
+}
+
+.portal-doc-title {
+    margin-bottom: $layout-spacing--small;
 }
