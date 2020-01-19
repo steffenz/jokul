@@ -28,7 +28,7 @@ $hover-elevation-distance: -0.25rem;
 .jkl-button {
     display: inline-flex;
     justify-content: center;
-    @include body-paragraph;
+    @include jkl-text-style("desktop/body");
     @include reset-outline;
     height: $button-height--normal;
     min-width: $button-min-width--normal;
@@ -36,13 +36,14 @@ $hover-elevation-distance: -0.25rem;
     cursor: pointer;
 
     @include small-device {
+        @include jkl-text-style("mobile/body");
         height: $button-height--compact;
         min-width: $button-min-width--compact;
         line-height: $button-height--compact;
     }
 
     @include compact-mode {
-        @include body-paragraph--mobile;
+        @include jkl-text-style("mobile/body");
         height: $button-height--compact;
         min-width: $button-min-width--compact;
         line-height: $button-height--compact;
@@ -80,7 +81,7 @@ $hover-elevation-distance: -0.25rem;
 
     &--primary,
     &--secondary {
-        border: solid $button-border-width currentColor;
+        border: solid $button-border-width $svart;
         border-radius: 999px;
         padding: 0 $button-padding;
 
