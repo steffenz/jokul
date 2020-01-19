@@ -36,7 +36,7 @@ Når du skal utvikle egne komponenter basert på Jøkul anbefaler vi at du tar i
   |   |- _all.scss
   |   |- _breakpoints.scss
   |   |- _colors.scss
-  |   |- _font-size.scss
+  |   |- _text-styles.scss
   |   |- _shadow.scss
   |   |- _spacing.scss
   |   |- _z-index.scss

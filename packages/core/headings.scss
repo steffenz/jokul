@@ -1,28 +1,38 @@
-@import "./variables/font-size";
+@import "./variables/text-styles";
 @import "./variables/spacing";
 @import "./mixins/helpers";
 
-.jkl-h1 {
-    @include h1-heading;
-    margin-bottom: $layout-spacing--small;
+.jkl-title-large {
+    @include jkl-text-style("desktop/title-large");
+    @include small-device {
+        @include jkl-text-style("mobile/title-large");
+    }
 }
 
-.jkl-h2 {
-    @include h2-heading;
-    margin-bottom: $layout-spacing--small;
+.jkl-title-medium {
+    @include jkl-text-style("desktop/title-medium");
+    @include small-device {
+        @include jkl-text-style("mobile/title-medium");
+    }
 }
 
-.jkl-h3 {
-    @include h3-heading;
-    margin-bottom: $layout-spacing--small;
+.jkl-heading-large {
+    @include jkl-text-style("desktop/heading-large");
+    @include small-device {
+        @include jkl-text-style("mobile/heading-large");
+    }
 }
 
-.jkl-h4 {
-    @include h4-heading;
-    margin-bottom: $layout-spacing--small;
+.jkl-heading-medium {
+    @include jkl-text-style("desktop/heading-medium");
+    @include small-device {
+        @include jkl-text-style("mobile/heading-medium");
+    }
 }
 
-.jkl-h5 {
-    @include h5-heading;
-    margin-bottom: $layout-spacing--small;
+.jkl-heading-small {
+    @include jkl-text-style("desktop/heading-small");
+    @include small-device {
+        @include jkl-text-style("mobile/heading-small");
+    }
 }

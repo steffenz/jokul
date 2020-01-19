@@ -1,23 +1,25 @@
-@import "./variables/font-size";
+@import "./variables/text-styles";
 @import "./variables/spacing";
 @import "./mixins/helpers";
 
 .jkl-lead {
-    @include lead-paragraph;
-    margin-bottom: $layout-spacing--small;
+    @include jkl-text-style("desktop/lead");
+    @include small-device {
+        @include jkl-text-style("mobile/lead");
+    }
 }
 
 .jkl-body {
-    @include body-paragraph;
-    margin-bottom: $layout-spacing--small;
+    @include jkl-text-style("desktop/body");
+    @include small-device {
+        @include jkl-text-style("mobile/body");
+    }
 }
 
 .jkl-small {
-    @include small-paragraph;
-    margin-bottom: $layout-spacing--small;
+    @include jkl-text-style("small");
 }
 
 .jkl-micro {
-    @include micro-paragraph;
-    margin-bottom: $layout-spacing--small;
+    @include jkl-text-style("micro");
 }
