@@ -42,7 +42,7 @@
         "@types/sass": "^1.16.0",
         "@types/vfile-message": "^2.0.0",
         "@typescript-eslint/eslint-plugin": "^2.16.0",
-        "@typescript-eslint/parser": "^2.16.0",
+        "@typescript-eslint/parser": "^2.19.2",
         "autoprefixer": "^9.6.1",
         "commitizen": "^4.0.1",
         "cssnano": "^4.1.10",
