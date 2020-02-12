@@ -4,19 +4,20 @@
 
 @import "~@fremtind/jkl-core/_functions.scss";
 
-$button-height--normal: rem(56px);
+$button-height--normal: var(--button-height--normal);
 $button-height--compact: rem(40px);
-$button-min-width--normal: rem(128px);
+$button-min-width--normal: var(--button-min-width--normal);
 $button-min-width--compact: rem(104px);
 
-$button-bg-color: $hvit;
-$button-bg-color--primary: $svart;
+$button-bg-color: var(--button-bg-color);
+$button-bg-color--primary: var(--button-bg-color--primary);
 
-$button-text-color: $svart;
-$button-text-color--primary: $hvit;
+$button-text-color: var(--button-text-color);
+$button-text-color--primary: var(--button-text-color--primary);
 
-$button-border-color: $svart;
-$button-border-width: rem(1px);
+$button-border-color: var(--button-border-color);
+$button-border-width: var(--button-border-width);
+$button-border-radius: var(--button-border-radius);
 $button-padding: $component-spacing--xl;
 
 $focus-ring-distance: rem(2px);
@@ -68,7 +69,7 @@ $hover-elevation-distance: -0.25rem;
     &--primary,
     &--secondary {
         border: solid $button-border-width $button-border-color;
-        border-radius: 999px;
+        border-radius: $button-border-radius;
         padding: 0 $button-padding;
 
         &:after {
