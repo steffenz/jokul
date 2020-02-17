@@ -1,0 +1,10 @@
+@import "~@fremtind/jkl-core/core.scss";
+@import "~@fremtind/jkl-message-box/message-box.scss";
+@import "../file-upload.scss";
+
+body {
+    display: flex;
+    justify-content: center;
+    margin-top: 68px;
+    margin-bottom: 68px;
+}

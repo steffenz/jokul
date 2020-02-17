@@ -1,0 +1,43 @@
+{
+    "name": "@fremtind/jkl-file-upload",
+    "version": "1.0.0",
+    "publishConfig": {
+        "access": "public"
+    },
+    "description": "Jøkul style file upload",
+    "homepage": "https://github.com/fremtind/jokul",
+    "keywords": [
+        "fileupload",
+        "jøkul",
+        "fremtind"
+    ],
+    "files": [
+        "*.css",
+        "*.scss"
+    ],
+    "license": "MIT",
+    "scripts": {
+        "clean": "rimraf node_modules/ dist/ **/*.css",
+        "build": "gulp build",
+        "build:watch": "gulp build:watch",
+        "test": "echo \"Error: run tests from root\" && exit 1",
+        "dev": "parcel example/index.html"
+    },
+    "dependencies": {
+        "@fremtind/jkl-core": "^2.0.1",
+        "@fremtind/jkl-message-box": "^1.1.1"
+    },
+    "devDependencies": {
+        "@fremtind/browserslist-config-jkl": "^0.4.14"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/fremtind/jokul.git"
+    },
+    "bugs": {
+        "url": "https://github.com/fremtind/jokul/issues"
+    },
+    "browserslist": [
+        "extends @fremtind/browserslist-config-jkl"
+    ]
+}

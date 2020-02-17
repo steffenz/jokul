@@ -1,0 +1,52 @@
+@import "~@fremtind/jkl-core/variables/_all.scss";
+@import "~@fremtind/jkl-core/mixins/_all.scss";
+
+.jkl-file-upload {
+    width: 716px;
+    display: flex;
+    flex-direction: column;
+
+    &__upload-area {
+        align-items: center;
+        background-color: $hvit;
+        cursor: pointer;
+        border: 2px dashed $svart;
+        display: flex;
+        font-size: $font-size-8;
+        height: 196px;
+        justify-content: center;
+        text-align: center;
+        transition: all 150ms ease;
+
+        span:before {
+            content: "Velg fil";
+            font-weight: $bold-weight;
+            padding-bottom: rem(10px);
+            border-bottom: 1px solid $svart;
+            padding-right: rem(7px);
+        }
+
+        &:hover {
+            background-color: $varde;
+        }
+
+        input {
+            display: none;
+        }
+    }
+
+    &__file-list {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        column-gap: rem(16px);
+        row-gap: rem(16px);
+
+        &--item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: $varde;
+            height: rem(167px);
+        }
+    }
+}
