@@ -1,4 +1,5 @@
 import React from "react";
+import classNames from "classnames";
 
 interface Progress {
     current: number;
@@ -20,11 +21,12 @@ export const calculatePercentage = ({ current, total }: Progress) => (total === 
  * @param progressTextValue if set screen readers will read this string, if not the percentage is read
  */
 export const ProgressBar: React.FC<Props> = ({ progress, progressTextValue, className }) => {
+    const componentClassNames = classNames("jkl-progress-bar", className);
     const width = `${calculatePercentage(progress)}%`;
 
     return (
         <div
-            className={`jkl-progress-bar ${className}`}
+            className={componentClassNames}
             role="progressbar"
             aria-valuenow={progress.current}
             aria-valuemin={0}
