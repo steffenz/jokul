@@ -7,7 +7,7 @@ import "@fremtind/jkl-message-box/message-box.min.css";
 const Example = () => {
     return (
         <section className="jkl-spacing--top-3 jkl-spacing--bottom-3">
-            <FileUpload />
+            <FileUpload remote="http://localhost:3000/upload-avatar" />
         </section>
     );
 };
