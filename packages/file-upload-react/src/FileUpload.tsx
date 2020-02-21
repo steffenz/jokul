@@ -44,20 +44,27 @@ const sortByCreatedAt = (a: JklFile, b: JklFile) => {
 
 export const FileUpload: React.FC<Props> = ({ remote, multiple = false, error }) => {
     const [isDraggingOver, setIsDraggingOver] = useState<boolean>(false);
-    const [gridTransitionDone, setGridTransitionDone] = useState(true);
-    const [newTransitionDone, setNewTransitionDone] = useState(true);
     const [fileList, dispatch] = useReducer(reducer, []);
     const [newFile, setNewFile] = useState<JklFile | null>(null);
+    const [move, setMove] = useState(false);
 
     // TODO go back to useState() - no need for reducer
     const addFiles = (files: FileList) => {
         if (files && files.length) {
-            Array.from(files).forEach((file) =>
+            /* Array.from(files).forEach((file) =>
                 setNewFile({
                     createdAt: Date.now().toString(),
                     file,
                 }),
-            );
+            ); */
+            setMove(true);
+            dispatch({
+                type: FileListActions.AddMultiple,
+                data: Array.from(files).map((file: File) => ({
+                    createdAt: Date.now().toString(),
+                    file,
+                })),
+            });
         }
     };
 
@@ -127,15 +134,16 @@ export const FileUpload: React.FC<Props> = ({ remote, multiple = false, error })
                 </aside>
             )}
             <div className="jkl-file-upload__file-list jkl-spacing--top-1">
-                {newFile && (
+                {/* {newFile && (
                     <FileItem file={newFile.file} className="new" onAnimationEnd={onNewFileTransitionDone(newFile)} />
-                )}
+                )} */}
                 {sortedFiles.map((jklFile: JklFile, i: number) => (
                     <FileItem
-                        className={`${newFile ? "move" : ""}`}
+                        className={move ? "move" : ""}
                         remote={remote}
                         file={jklFile.file}
                         key={jklFile.createdAt}
+                        onAnimationEnd={() => setMove(false)}
                     />
                 ))}
             </div>
