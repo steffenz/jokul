@@ -19,6 +19,7 @@ interface Props extends BaseInputProps {
 export const ActionTextField = ({
     action,
     forceCompact,
+    inverted,
     className,
     helpLabel,
     errorLabel,
@@ -28,6 +29,7 @@ export const ActionTextField = ({
 }: Props) => {
     const componentClassName = classNames("jkl-text-field jkl-text-field--action", className, {
         "jkl-text-field--compact": forceCompact,
+        "jkl-text-field--inverted": inverted,
     });
 
     return (

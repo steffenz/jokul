@@ -34,7 +34,7 @@ $bottom-margin: $component-spacing--large;
         top: 0;
         width: $calendar-width;
         justify-content: space-between;
-        color: $svart;
+        color: inherit;
     }
 
     &__month-button {
@@ -50,6 +50,7 @@ $bottom-margin: $component-spacing--large;
         height: $line-height-4;
         width: $line-height-4;
         border-radius: 50%;
+        color: inherit;
 
         &--right {
             right: 0;
@@ -81,7 +82,7 @@ $bottom-margin: $component-spacing--large;
     }
 
     &__month-arrow {
-        @include chevron(rem(20px), $svart, rem(1px));
+        @include chevron(rem(20px), currentColor, rem(1px));
         transform-origin: center;
         transition: none;
 
@@ -102,7 +103,7 @@ $bottom-margin: $component-spacing--large;
         justify-content: center;
         align-content: center;
         margin-bottom: $component-spacing--xl;
-        color: $svart;
+        color: inherit;
     }
 
     &__year-selector {
@@ -176,6 +177,7 @@ $bottom-margin: $component-spacing--large;
             width: $date-width;
             border-radius: 50%;
             background-color: transparent;
+            color: inherit;
 
             font-size: $font-size-6;
             line-height: $line-height-5;
@@ -207,6 +209,31 @@ $bottom-margin: $component-spacing--large;
 
             &:focus {
                 box-shadow: 0 0 0 rem(1px) $gra-10, 0 0 0 rem(3px) $focus-color;
+            }
+        }
+    }
+
+    &--inverted,
+    *[data-theme="dark"] & {
+        & .jkl-datepicker__calendar {
+            background-color: $gra-100;
+            border-color: $hvit;
+            color: $hvit;
+
+            & td button {
+                &[autofocus] {
+                    color: $svart;
+                    background-color: $gra-10;
+                }
+                &[aria-current="date"] {
+                    background-color: $gra-70;
+                }
+                &[data-adjacent="true"] {
+                    color: $gra-40;
+                }
+                &:disabled {
+                    color: $gra-70;
+                }
             }
         }
     }

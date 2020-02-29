@@ -29,6 +29,7 @@ interface Props {
     initialDate?: Date;
     onChange?: (date: Date) => void;
     extended?: boolean;
+    inverted?: boolean;
     initialShow?: boolean;
     className?: string;
     helpLabel?: string;
@@ -71,6 +72,7 @@ export function DatePicker({
     initialDate,
     onChange,
     extended = false,
+    inverted,
     initialShow = false,
     className = "",
     errorLabel,
@@ -88,12 +90,19 @@ export function DatePicker({
         "jkl-datepicker",
         {
             "jkl-datepicker--extended": extended,
+            "jkl-datepicker--inverted": inverted,
             "jkl-datepicker--open": !datepickerHidden,
         },
         className,
     );
     const inputClassName = classNames("jkl-text-field jkl-text-field--action jkl-datepicker__input", {
         "jkl-text-field--compact": forceCompact,
+        "jkl-text-field--inverted": inverted,
+    });
+    const yearSelectorClassName = classNames({
+        "jkl-text-field": true,
+        "jkl-text-field--inverted": inverted,
+        "jkl-datepicker__year-selector": true,
     });
 
     useEffect(() => {
@@ -199,7 +208,7 @@ export function DatePicker({
                     >
                         {extended && (
                             <div className="jkl-datepicker__calendar-navigation">
-                                <label className="jkl-text-field jkl-datepicker__year-selector">
+                                <label className={yearSelectorClassName}>
                                     <Label variant="small">{yearLabel}</Label>
                                     <input type="year" className="jkl-text-field__input jkl-datepicker__year-value" />
                                 </label>

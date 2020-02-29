@@ -10,9 +10,19 @@ interface Props extends BaseInputProps {
     type?: "text" | "number" | "tel" | "password" | "email" | "year";
 }
 
-export const TextField = ({ helpLabel, errorLabel, label, className, variant, forceCompact, ...rest }: Props) => {
+export const TextField = ({
+    helpLabel,
+    errorLabel,
+    label,
+    className,
+    variant,
+    forceCompact,
+    inverted,
+    ...rest
+}: Props) => {
     const componentClassName = classNames("jkl-text-field", className, {
         "jkl-text-field--compact": forceCompact,
+        "jkl-text-field--inverted": inverted,
     });
 
     return (

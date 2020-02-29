@@ -21,10 +21,12 @@ export const TextArea = ({
     rows = 7,
     placeholder = " ",
     forceCompact,
+    inverted,
     ...restProps
 }: Props) => {
     const componentClassName = classNames("jkl-text-field jkl-text-area", className, {
         "jkl-text-field--compact": forceCompact,
+        "jkl-text-field--inverted": inverted,
     });
 
     return (

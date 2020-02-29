@@ -11,6 +11,7 @@ interface Props {
     className?: string;
     forceCompact?: boolean;
     invalid?: boolean;
+    inverted?: boolean;
 }
 
 export function Checkbox({
@@ -22,11 +23,13 @@ export function Checkbox({
     onChange,
     className,
     inline = false,
+    inverted,
     forceCompact,
 }: Props) {
     const componentClassNames = classNames("jkl-checkbox", className, {
         "jkl-checkbox--compact": forceCompact,
         "jkl-checkbox--inline": inline,
+        "jkl-checkbox--inverted": inverted,
         "jkl-checkbox--error": invalid,
     });
 

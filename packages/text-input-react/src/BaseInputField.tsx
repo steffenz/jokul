@@ -7,6 +7,7 @@ export interface BaseInputProps {
     onFocus?: FocusEventHandler<HTMLInputElement | HTMLTextAreaElement>;
     value?: string;
     className?: string;
+    inverted?: boolean;
     id?: string;
     required?: boolean;
     placeholder?: string;

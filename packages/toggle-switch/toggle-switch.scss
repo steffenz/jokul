@@ -96,7 +96,8 @@ $inverted-disabled-color: #969696;
         }
     }
 
-    &--inverted {
+    &--inverted,
+    *[data-theme="dark"] & {
         .jkl-toggle-switch {
             &__slider {
                 &:before {

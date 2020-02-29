@@ -111,7 +111,8 @@ $hover-elevation-distance: -0.25rem;
         }
     }
 
-    &--inverted {
+    &--inverted,
+    *[data-theme="dark"] & {
         &.jkl-button--primary {
             background-color: $button-bg-color;
             color: $button-text-color;
